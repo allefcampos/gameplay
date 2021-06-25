@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar, LogBox  } from 'react-native';
 
 // Carregar as fontes
 import { useFonts} from 'expo-font';
@@ -7,8 +8,10 @@ import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhan
 
 import AppLoading from 'expo-app-loading';
 
+LogBox.ignoreLogs(['You are not currently signed in to Expo on your development machine.']);
+
+import { AuthProvider } from './src/hooks/auth'
 import { Routes } from './src/routes';
-import { StatusBar } from 'react-native';
 import { Background } from './src/components/Background';
 
 export default function App() {
@@ -33,7 +36,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </Background>
   );
 }
