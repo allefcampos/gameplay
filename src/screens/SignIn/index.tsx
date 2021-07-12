@@ -9,6 +9,8 @@ import {
 
 import { useAuth } from '../../hooks/auth';
 
+const { SCOPE } = process.env;
+
 import IllustrationImg from '../../assets/illustration.png';
 import { theme } from '../../global/styles/theme';
 import { styles } from './styles';
@@ -26,7 +28,7 @@ export function SignIn(){
       Alert.alert(error);
     }
   }
-
+  // console.log(SCOPE);
   return(
     <Background>
       <View style={styles.container}>     
